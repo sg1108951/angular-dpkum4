@@ -1,0 +1,58 @@
+<hello name="{{ name }}"></hello>
+<form (ngSubmit)="submit()" [formGroup]="employee">
+  <div>
+    <h2>Create employee !</h2>
+    <div>
+      <label>FullName : </label>
+      <input formControlName="fullname" id="fullName" type="text">
+    </div>
+    <br>
+    <div>
+      <label>Email : </label>
+      <input formControlName="email" id="email" type="text">
+    </div>
+  </div>
+  <br>
+  <div formGroupName="skills">
+    <div>
+      <label>Skills : </label>
+      <input id="skillname" formControlName="skillName" type="text">
+    </div>
+    <br>
+    <div>
+      <label>Experiance : </label>
+      <input formControlName="experianceInYears" type="text">
+    </div>
+    <br>
+    <div>
+      <label>Proficiency : </label>
+      <input type="radio" value="advance" formControlName="proficiency" >Advance
+      <input type="radio" value="intermediate" formControlName="proficiency" >Intermediate
+      <input type="radio" value="beginers" formControlName="proficiency" >Beginers
+    </div>
+    <br>
+    <div>
+      <button type="submit" id="btn">Save</button>
+      <button type="button" (click)="onLoadDataClick()" id="btn1">Load data</button>
+      <button type="button" (click)="onClearData()" id="btn1">clear data</button>
+    </div>
+  </div>
+
+</form>
+<br>
+
+<table>
+  <tr>
+    <th>FormGroup</th>
+  </tr>
+  <tr>
+    <td>
+      FullName : {{ employee.value | json }}
+      <br>Email : {{employee.get('email').value}}
+      <br>FullName Touched : {{this.employee.get('fullname').touched}}
+      <br>FullName Valid : {{this.employee.get('fullname').valid}}
+      <br>Email Touched : {{this.employee.get('email').touched}}
+      <br>Email Valid : {{this.employee.get('email').touched}}
+    </td>
+  </tr>
+</table>
